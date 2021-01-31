@@ -4,9 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import me.xtrm.mod2xloader.loader.FabricLoader;
 import me.xtrm.mod2xloader.loader.ForgeLoader;
+import me.xtrm.mod2xloader.util.SemVersion;
 
-import java.util.function.Supplier;
+import java.io.File;
 
+/**
+ * Enum containing all of the available ModLoaders
+ *
+ * @author xTrM_
+ */
 @AllArgsConstructor
 public enum ModLoader {
     FORGE("Forge", ForgeLoader::new),
@@ -14,10 +20,10 @@ public enum ModLoader {
     //LITELOADER("LiteLoader", () -> null); //TODO: ll loader?
 
     @Getter private final String name;
-    private final Supplier<IMod2XLoader> loaderSupplier;
+    private final I2XLoaderProvider loaderProvider;
 
-    public IMod2XLoader getLoader() {
-        return loaderSupplier.get();
+    public Mod2XLoader getLoader(File minecraftHome, SemVersion mcVersion, String loaderVersion, I2XLoaderCallback callback){
+        return this.loaderProvider.getLoader(minecraftHome, mcVersion, loaderVersion, callback);
     }
 
 }

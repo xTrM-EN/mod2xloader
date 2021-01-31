@@ -1,20 +1,26 @@
 package me.xtrm.mod2xloader.loader;
 
-import me.xtrm.mod2xloader.IMod2XLoader;
-import me.xtrm.mod2xloader.util.Version;
+import me.xtrm.mod2xloader.I2XLoaderCallback;
+import me.xtrm.mod2xloader.Mod2XLoader;
+import me.xtrm.mod2xloader.util.SemVersion;
 
 import java.io.File;
 
-public class ForgeLoader implements IMod2XLoader {
+public class ForgeLoader extends Mod2XLoader {
 
-    @Override
-    public boolean isInstalled(File minecraftHome, Version loaderVersion) {
+    private final static String[] versionFormats = new String[]{"{mc}-forge{mc}-{ver}-{mc}", "{mc}-forge{ver}-{mc}", "{mc}-forge-{ver}"};
 
-        return false;
+    public ForgeLoader(File minecraftHome, SemVersion mcVersion, String loaderVersion, I2XLoaderCallback callback) {
+        super(minecraftHome, mcVersion, loaderVersion, callback);
     }
 
     @Override
-    public void downloadAndInstall(File minecraftHome, Version loaderVersion) {
+    public String[] getVersionFormats() {
+        return versionFormats;
+    }
+
+    @Override
+    public void downloadAndInstall() {
 
     }
 
