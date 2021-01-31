@@ -12,7 +12,18 @@ import java.io.File;
 public interface IMod2XLoader {
 
     /**
-     * Downloads and installs the specified version of a ModLoader
+     * Gets the current installation state of the ModLoader
+     *
+     * @param minecraftHome
+     *      the .minecraft directory
+     * @param loaderVersion
+     *      the required modloader {@link Version}
+     * @return whether or not the loader is already installed
+     */
+    boolean isInstalled(File minecraftHome, Version loaderVersion);
+
+    /**
+     * Downloads and installs the specified version of the ModLoader
      *
      * @param minecraftHome
      *      the .minecraft directory

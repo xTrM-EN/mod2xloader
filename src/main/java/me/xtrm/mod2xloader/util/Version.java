@@ -2,6 +2,8 @@ package me.xtrm.mod2xloader.util;
 
 import lombok.NonNull;
 
+import java.util.Arrays;
+
 /**
  * Utility class to parse and compare versions following
  * the SemVer specification. (See <a href="https://semver.org/">https://semver.org/</a>)
@@ -10,8 +12,8 @@ import lombok.NonNull;
  * See <a href="https://gist.github.com/brianguertin/ada4b65c6d1c4f6d3eee3c12b6ce021b">source</a>
  */
 public class Version implements Comparable<Version> {
-    @NonNull
-    public final int[] numbers;
+
+    @NonNull public final int[] numbers;
 
     public Version(@NonNull String version) {
         final String[] split = version.split("\\-")[0].split("\\.");
@@ -32,5 +34,15 @@ public class Version implements Comparable<Version> {
             }
         }
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for(int i : this.numbers){
+            sb.append(i);
+            if (i != this.numbers.length - 1) sb.append('.');
+        }
+        return sb.toString();
     }
 }
