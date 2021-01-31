@@ -41,6 +41,23 @@ public abstract class Mod2XLoader {
         this.callback = callback;
     }
 
+    protected void log(String message){
+        if(callback == null) return;
+        callback.onLog(0, message);
+    }
+
+    protected void error(String message){
+        if(callback == null) return;
+        callback.onLog(-1, message);
+    }
+
+    protected void debug(String message){
+        if(callback == null) return;
+        callback.onLog(1, message);
+    }
+
+    public abstract void execute(M2XLoaderTask... tasks);
+
     /**
      * Gets the current installation state of the ModLoader
      *
@@ -74,10 +91,5 @@ public abstract class Mod2XLoader {
      * @return the version formats
      */
     public abstract String[] getVersionFormats();
-
-    /**
-     * Downloads and installs the specified version of the ModLoader
-     */
-    public abstract void downloadAndInstall();
 
 }

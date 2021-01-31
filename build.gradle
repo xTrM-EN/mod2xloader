@@ -11,7 +11,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.nkosmos:re-sourcer:0.3.5'
+    //implementation 'com.github.nkosmos:re-sourcer:0.3.5'
+    //implementation 'com.google.guava:guava:19.0'
 
     // https://projectlombok.org
     compileOnly 'org.projectlombok:lombok:1.18.4'
