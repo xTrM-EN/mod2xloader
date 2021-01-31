@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+}
+
+group 'me.xtrm'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.nkosmos:re-sourcer:0.3.5'
+
+    // https://projectlombok.org
+    compileOnly 'org.projectlombok:lombok:1.18.4'
+    annotationProcessor 'org.projectlombok:lombok:1.18.4'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.hamcrest:hamcrest-library:2.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    manifest.attributes(
+            'Specification-Title': 'libForgeInstall',
+            'Specification-Version': '1.0',
+            'Specification-Vendor': 'FFMT',
+            'Implementation-Title': 'mod2xloader',
+            'Implementation-Version': version,
+            'Implementation-Vendor': 'xTrM_'
+    )
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
