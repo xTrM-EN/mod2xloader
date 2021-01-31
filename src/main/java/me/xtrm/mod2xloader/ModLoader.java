@@ -15,9 +15,9 @@ import java.io.File;
  */
 @AllArgsConstructor
 public enum ModLoader {
-    FORGE("Forge", ForgeLoader::new),
-    FABRIC("Fabric", FabricLoader::new);
-    //LITELOADER("LiteLoader", () -> null); //TODO: ll loader?
+    FORGE("m2xl.loaders.forge", ForgeLoader::new),
+    FABRIC("m2xl.loaders.fabric", FabricLoader::new);
+    //LITELOADER("LiteLoader", () -> null); //TODO: ll?
 
     @Getter private final String name;
     private final I2XLoaderProvider loaderProvider;
