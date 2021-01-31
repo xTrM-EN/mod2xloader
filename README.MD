@@ -1,9 +1,6 @@
 # mod2xloader
-...ou modloaderloader pour les intimes
+(or modloaderloader) is a loading and management library for ModLoaders for Minecraft.
 
-## kécécé
-mod2xloader est une library d'installation et de management pour différents ModLoaders pour Minecraft.
+Supported ModLoaders are as follows:
 
-La liste de loaders supportés est la suivante:
-
-###TODO: finir ce readme
+###TODO: readme
