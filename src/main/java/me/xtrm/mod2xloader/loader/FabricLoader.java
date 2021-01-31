@@ -8,6 +8,11 @@ import java.io.File;
 public class FabricLoader implements IMod2XLoader {
 
     @Override
+    public boolean isInstalled(File minecraftHome, Version loaderVersion) {
+        return false;
+    }
+
+    @Override
     public void downloadAndInstall(File minecraftHome, Version loaderVersion) {
 
     }
